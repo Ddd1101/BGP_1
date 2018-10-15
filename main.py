@@ -6,13 +6,25 @@ import openpyxl
 
 def fileload(path):
     workbook = openpyxl.load_workbook(path)
-    sheet = workbook.active
-    sheet = workbook.get_active_sheet()
+    #sheet_in = workbook.active
+    sheet_in = workbook.get_sheet_by_name('Sheet 1')
 
-    for row in sheet.rows:
+    for row in sheet_in.rows:
         for cell in row:
             print(cell.value)
         print("\t")
+
+    return sheet_in
+
+def filewrite(path, sheet_in):
+    workbook = openpyxl.load_workbook(path)
+    sheet_out = workbook.active
+    sheet_out.title = '1'
+
+    for row in sheet_in:
+        for cell in row:
+            if cell.value == '':
+
 
 
 if __name__ == "__main__":
