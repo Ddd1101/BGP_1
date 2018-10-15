@@ -3,28 +3,17 @@
 import xlrd
 import os
 import openpyxl
+import xlwt
 
 def fileload(path):
-    workbook = openpyxl.load_workbook(path)
-    #sheet_in = workbook.active
-    sheet_in = workbook.get_sheet_by_name('Sheet 1')
-
-    for row in sheet_in.rows:
-        for cell in row:
-            print(cell.value)
-        print("\t")
-
-    return sheet_in
-
-def filewrite(path, sheet_in):
-    workbook = openpyxl.load_workbook(path)
-    sheet_out = workbook.active
-    sheet_out.title = '1'
-
-    for row in sheet_in:
-        for cell in row:
-            if cell.value == '':
-
+    workbook = xlrd.open_workbook(path)
+    sheet_in = workbook.sheet_names()
+    worksheet = workbook.sheet_by_name('Sheet 1')
+    for i in range(1,worksheet.nrows):
+        row = worksheet.row(i)
+        for j in range(0,worksheet.ncols):
+            print(worksheet.cell_value(i,j)," ")
+        print('\n')
 
 
 if __name__ == "__main__":
