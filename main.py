@@ -28,15 +28,6 @@ if __name__ == "__main__":
             item[j] = worksheet.row(i)
             i += 1
         newitem = sorted(item.items(), key=lambda d: d[1][3], reverse=False)
-        #for k in range(0,len(newitem)):
-        #    if newitem[k][1][5] == u'报告发布':
-        #        a = k
-        #    if newitem[k][1][5] == u'检验':
-        #        b = k
-        #    if newitem[k][1][5] == u'发药':
-        #        c = k
-        #    if newitem[k][1][5] == u'配药':
-        #       d = k
         for k in newitem:
             out_col = 0
             if k[1][5].value == u'报告审核':
