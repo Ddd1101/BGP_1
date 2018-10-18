@@ -50,7 +50,6 @@ if __name__ == "__main__":
                     sheet.write(out_row, out_col, value)
                 else:
                     sheet.write(out_row,out_col,h.value)
-                #print(h.value)
                 out_col+=1
             out_row+=1
         book.save('out.xls')
